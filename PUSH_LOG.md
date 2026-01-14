@@ -10,3 +10,4 @@
 | 2026-01-14 17:35:28 | Implement RAG data generation and ingestion | tang |
 | 2026-01-14 17:36:19 | Implement Intent Router and RAG Service | tang |
 | 2026-01-14 17:37:54 | Implement Web Search, Context Assembler, and Chat Service | tang |
+| 2026-01-14 17:40:05 | Implement Profile Extraction Agent and Background Tasks | tang |

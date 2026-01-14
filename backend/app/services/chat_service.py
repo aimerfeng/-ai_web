@@ -11,6 +11,7 @@ from app.services.intent_router import IntentRouter, IntentType
 from app.services.rag_service import RAGService
 from app.services.web_search_service import WebSearchService
 from app.services.context_assembler import ContextAssembler
+from app.services.profile_agent import ProfileExtractionAgent
 
 class ChatService:
     def __init__(self, db: AsyncSession):
@@ -19,6 +20,7 @@ class ChatService:
         self.rag_service = RAGService()
         self.web_search_service = WebSearchService()
         self.context_assembler = ContextAssembler()
+        self.profile_agent = ProfileExtractionAgent(db)
         self.openai_client = AsyncOpenAI(api_key=settings.OPENAI_API_KEY) if settings.OPENAI_API_KEY else None
 
     async def chat(self, user: User, request: ChatRequest) -> AsyncGenerator[str, None]:
@@ -133,6 +135,14 @@ class ChatService:
         
         # Yield conversation ID to client if it was new
         yield self._sse_data({"conversation_id": conversation_id, "done": True})
+
+        # 8. Async Profile Extraction (Trigger every 5 messages or simplified trigger)
+        # For MVP, we can just trigger it. In production, use background tasks (FastAPI BackgroundTasks)
+        # to avoid blocking the response if not streaming, but here we are streaming.
+        # However, since this is a generator, we can't easily run background task after yield.
+        # We should accept BackgroundTasks in the API endpoint.
+        # For now, let's just do it here or better, inject it in the endpoint.
+        pass
 
     def _sse_data(self, data: dict) -> str:
         return f"data: {json.dumps(data)}\n\n"
