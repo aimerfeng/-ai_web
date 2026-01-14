@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.database import init_db
-from app.api.endpoints import auth
+from app.api.endpoints import auth, chat
 
 app = FastAPI(
     title="SkinTech AI Consultant",
@@ -24,6 +24,7 @@ async def startup_event():
     await init_db()
 
 app.include_router(auth.router, prefix="/api/auth", tags=["auth"])
+app.include_router(chat.router, prefix="/api", tags=["chat"])
 
 @app.get("/")
 async def root():
