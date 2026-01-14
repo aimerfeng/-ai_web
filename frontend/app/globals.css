@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme {
+  /* SkinTech Brand Colors - Soft Coral/Peach Gradient & Elegant Dark Mode */
+  --color-primary-50: #fff5f5;
+  --color-primary-100: #ffe3e3;
+  --color-primary-200: #ffc9c9;
+  --color-primary-300: #ffa8a8;
+  --color-primary-400: #ff8787;
+  --color-primary-500: #ff6b6b;
+  --color-primary-600: #fa5252;
+  --color-primary-700: #f03e3e;
+  --color-primary-800: #e03131;
+  --color-primary-900: #c92a2a;
+
+  /* Accent Colors - Soft Teal/Sage for calm/scientific feel */
+  --color-accent-50: #e6fcf5;
+  --color-accent-100: #c3fae8;
+  --color-accent-200: #96f2d7;
+  --color-accent-300: #63e6be;
+  --color-accent-400: #38d9a9;
+  --color-accent-500: #20c997;
+  --color-accent-600: #12b886;
+  --color-accent-700: #0ca678;
+  --color-accent-800: #099268;
+  --color-accent-900: #087f5b;
+}
+
+:root {
+  /* Base Background - Clean Off-White */
+  --background: #ffffff;
+  --foreground: #171717;
+  
+  /* Glassmorphism Variables */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --glass-blur: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Base Background - Deep Midnight Blue */
+    --background: #0a0a0c;
+    --foreground: #ededed;
+    
+    /* Glassmorphism Variables Dark */
+    --glass-bg: rgba(20, 20, 30, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.1);
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Utilities */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+}
+
+.aurora-bg {
+  background: radial-gradient(at 0% 0%, rgba(255, 154, 158, 0.15) 0px, transparent 50%),
+              radial-gradient(at 100% 0%, rgba(254, 207, 239, 0.15) 0px, transparent 50%),
+              radial-gradient(at 100% 100%, rgba(161, 140, 209, 0.1) 0px, transparent 50%),
+              radial-gradient(at 0% 100%, rgba(251, 194, 235, 0.1) 0px, transparent 50%);
+}
+
+.dark .aurora-bg {
+  background: radial-gradient(at 0% 0%, rgba(255, 154, 158, 0.05) 0px, transparent 50%),
+              radial-gradient(at 100% 0%, rgba(254, 207, 239, 0.05) 0px, transparent 50%),
+              radial-gradient(at 100% 100%, rgba(161, 140, 209, 0.05) 0px, transparent 50%),
+              radial-gradient(at 0% 100%, rgba(251, 194, 235, 0.05) 0px, transparent 50%);
+}
+
+/* Scrollbar Hide */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

@@ -38,7 +38,7 @@
     - 创建 `app/schemas/` 目录
     - _Requirements: 3.2, 9.2_
 
-  - [ ]* 2.3 编写数据模型属性测试
+  - [ ] 2.3 编写数据模型属性测试
     - **Property 4: Product Data Validity**
     - **Validates: Requirements 3.2, 3.4**
 
@@ -59,7 +59,7 @@
     - 实现认证依赖注入 (Depends)
     - _Requirements: 11.2, 11.3_
 
-  - [ ]* 3.3 编写认证属性测试
+  - [ ] 3.3 编写认证属性测试
     - **Property 1: Password Hashing Security**
     - **Property 2: Authentication Lifecycle Round-Trip**
     - **Validates: Requirements 1.1, 1.2, 1.5, 1.6**
@@ -88,7 +88,7 @@
     - 支持 --generate (生成数据) 和 --ingest (向量化) 参数
     - _Requirements: 3.1, 3.5_
 
-  - [ ]* 5.4 编写产品数据属性测试
+  - [ ] 5.4 编写产品数据属性测试
     - **Property 4: Product Data Validity**
     - **Validates: Requirements 3.2, 3.4**
 
@@ -100,7 +100,7 @@
     - 返回 IntentResult (intent, confidence, used_llm_fallback)
     - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5_
 
-  - [ ]* 6.2 编写意图分类属性测试
+  - [ ] 6.2 编写意图分类属性测试
     - **Property 5: Intent Classification Completeness**
     - **Validates: Requirements 4.1**
 
@@ -112,7 +112,7 @@
     - 配置默认阈值 0.7
     - _Requirements: 5.1, 5.2, 5.3_
 
-  - [ ]* 7.2 编写 RAG 检索属性测试
+  - [ ] 7.2 编写 RAG 检索属性测试
     - **Property 6: RAG Retrieval with Similarity Threshold**
     - **Validates: Requirements 5.1, 5.2, 5.4**
 
@@ -132,7 +132,7 @@
     - 注入当前系统时间到 System Prompt
     - _Requirements: 6.1, 8.1, 8.4, 8.5_
 
-  - [ ]* 9.2 编写上下文组装属性测试
+  - [ ] 9.2 编写上下文组装属性测试
     - **Property 7: Time Injection in System Prompt**
     - **Property 9: Context Assembly with Token Budget**
     - **Validates: Requirements 6.1, 8.1, 8.4, 8.5**
@@ -149,7 +149,7 @@
     - 实现异步触发逻辑 (每 5 条消息)
     - _Requirements: 9.1, 9.2, 9.3, 9.5, 9.6_
 
-  - [ ]* 11.2 编写画像提取属性测试
+  - [ ] 11.2 编写画像提取属性测试
     - **Property 10: Profile Extraction Lifecycle**
     - **Validates: Requirements 9.1, 9.2, 9.3, 9.4, 9.6**
 
@@ -169,7 +169,7 @@
     - 实现用户数据隔离 (WHERE user_id = current_user_id)
     - _Requirements: 2.1, 2.4, 2.5, 11.1, 11.4_
 
-  - [ ]* 12.3 编写聊天服务属性测试
+  - [ ] 12.3 编写聊天服务属性测试
     - **Property 3: User Data Isolation**
     - **Property 8: Web Search Context Integration**
     - **Property 11: SSE Streaming Response**
@@ -183,7 +183,7 @@
     - 实现标准化错误响应 (error_code, message, request_id)
     - _Requirements: 11.5, 11.6, 12.2, 12.4, 12.5_
 
-  - [ ]* 13.2 编写错误处理属性测试
+  - [ ] 13.2 编写错误处理属性测试
     - **Property 12: API Error Response Format**
     - **Validates: Requirements 11.5, 11.6**
 
@@ -253,7 +253,7 @@
 
 ## Notes
 
-- 任务标记 `*` 为可选测试任务，可跳过以加快 MVP 开发
+- 所有测试任务都是必须完成的，确保代码质量
 - 每个 Checkpoint 用于验证阶段性成果，确保增量开发质量
 - Property-Based Tests 使用 Hypothesis 库，每个测试至少运行 100 次迭代
 - 后端测试使用 pytest-asyncio，前端测试使用 Jest + React Testing Library
