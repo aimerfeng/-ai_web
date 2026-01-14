@@ -1,6 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.core.database import init_db
+from app.api.endpoints import auth
+
 app = FastAPI(
     title="SkinTech AI Consultant",
     description="Intelligent Skincare Consultant API with RAG and Time-Awareness",
@@ -15,6 +18,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.on_event("startup")
+async def startup_event():
+    await init_db()
+
+app.include_router(auth.router, prefix="/api/auth", tags=["auth"])
 
 @app.get("/")
 async def root():

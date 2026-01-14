@@ -6,3 +6,4 @@
 | 2026-01-14 17:28:21 | Add README.md | tang |
 | 2026-01-14 17:29:00 | Initialize backend structure and requirements | tang |
 | 2026-01-14 17:32:20 | Implement database config and user models | tang |
+| 2026-01-14 17:34:27 | Implement authentication system | tang |
