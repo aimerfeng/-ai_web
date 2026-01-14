@@ -366,6 +366,7 @@ class ChatService:
         6. Trigger profile extraction if needed
         """
         pass
+```
 
 #### 8. IngestionService
 数据摄入服务，负责产品数据的生成和向量化。
