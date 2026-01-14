@@ -8,7 +8,10 @@ from app.models.user import UserProfile, Message, User
 class ProfileExtractionAgent:
     def __init__(self, db: AsyncSession):
         self.db = db
-        self.client = AsyncOpenAI(api_key=settings.OPENAI_API_KEY) if settings.OPENAI_API_KEY else None
+        self.client = AsyncOpenAI(
+            api_key=settings.OPENAI_API_KEY,
+            base_url=settings.OPENAI_BASE_URL
+        ) if settings.OPENAI_API_KEY else None
 
     async def extract_and_update(self, user_id: str, chat_history: list[Message]) -> None:
         """
@@ -20,13 +23,13 @@ class ProfileExtractionAgent:
         # Prepare context for LLM
         history_text = "\n".join([f"{msg.role}: {msg.content}" for msg in chat_history[-20:]]) # Analyze last 20 messages
         
-        system_prompt = """You are a profile extraction agent. Your job is to analyze the conversation and extract user skincare preferences.
-Output JSON ONLY with the following keys (if information is found, otherwise leave null/empty list):
-- skin_type: "oily", "dry", "combination", "sensitive", "normal" (or null)
-- sensitivities: list of strings (e.g. ["alcohol", "fragrance"])
-- preferred_brands: list of strings
-- budget_range: "budget", "mid-range", "luxury" (or null)
-- concerns: list of strings (e.g. ["acne", "aging"])
+        system_prompt = """你是一个用户信息提取 Agent。你的工作是分析对话内容并提取用户的护肤偏好。
+仅输出 JSON 格式，包含以下字段（如果找到相关信息则填写，否则留空或 null）：
+- skin_type: "oily" (油性), "dry" (干性), "combination" (混合性), "sensitive" (敏感性), "normal" (中性) (或 null)
+- sensitivities: 字符串列表 (例如 ["酒精", "香精"])
+- preferred_brands: 字符串列表
+- budget_range: "budget" (平价), "mid-range" (中端), "luxury" (贵妇/高端) (或 null)
+- concerns: 字符串列表 (例如 ["痘痘", "抗老", "美白"])
 
 Example Output:
 {
@@ -40,10 +43,10 @@ Example Output:
 
         try:
             response = await self.client.chat.completions.create(
-                model="gpt-4o-mini",
+                model=settings.OPENAI_MODEL,
                 messages=[
                     {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": f"Conversation:\n{history_text}"}
+                    {"role": "user", "content": f"对话内容:\n{history_text}"}
                 ],
                 response_format={"type": "json_object"},
                 temperature=0

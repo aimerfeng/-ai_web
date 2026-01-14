@@ -51,7 +51,7 @@ export default function Home() {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="text-5xl md:text-7xl font-serif font-bold tracking-tight bg-gradient-to-r from-primary-600 via-primary-500 to-accent-500 bg-clip-text text-transparent"
           >
-            SkinTech AI
+            SkinTech 智能美妆
           </motion.h1>
           <motion.p 
             initial={{ y: 20, opacity: 0 }}
@@ -59,8 +59,8 @@ export default function Home() {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="text-xl md:text-2xl text-gray-600 font-light max-w-2xl mx-auto leading-relaxed"
           >
-            Your intelligent cosmetic chemist. <br/>
-            Personalized analysis, scientific recommendations, real-time advice.
+            您的专属 AI 配方师与护肤顾问 <br/>
+            深度成分分析 · 科学护肤建议 · 实时智能问答
           </motion.p>
         </div>
 
@@ -73,12 +73,12 @@ export default function Home() {
         >
           <Link href="/auth/register">
             <Button size="lg" className="rounded-full px-8 text-lg h-14 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-              Get Started <ArrowRight className="ml-2 w-5 h-5" />
+              立即体验 <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </Link>
           <Link href="/auth/login">
             <Button variant="ghost" size="lg" className="rounded-full px-8 text-lg h-14 hover:bg-white/50">
-              Sign In
+              登录账号
             </Button>
           </Link>
         </motion.div>
@@ -91,9 +91,9 @@ export default function Home() {
           className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-16 text-left"
         >
           {[
-            { title: "Smart Analysis", desc: "AI-driven skin type & concern detection based on your chat." },
-            { title: "Ingredient Check", desc: "Deep dive into product formulations and safety warnings." },
-            { title: "Routine Builder", desc: "Customized AM/PM routines that fit your budget and lifestyle." }
+            { title: "智能肤质分析", desc: "通过对话精准识别您的肤质类型与护肤诉求，建立个人档案。" },
+            { title: "深度成分查询", desc: "基于专业知识库，解析化妆品成分功效与安全风险。" },
+            { title: "科学护肤定制", desc: "为您量身定制早晚护肤流程，推荐最适合的产品组合。" }
           ].map((item, i) => (
             <div key={i} className="glass p-6 rounded-2xl border-white/40 hover:bg-white/40 transition-colors">
               <h3 className="font-semibold text-primary-700 mb-2">{item.title}</h3>

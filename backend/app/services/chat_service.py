@@ -21,7 +21,10 @@ class ChatService:
         self.web_search_service = WebSearchService()
         self.context_assembler = ContextAssembler()
         self.profile_agent = ProfileExtractionAgent(db)
-        self.openai_client = AsyncOpenAI(api_key=settings.OPENAI_API_KEY) if settings.OPENAI_API_KEY else None
+        self.openai_client = AsyncOpenAI(
+            api_key=settings.OPENAI_API_KEY,
+            base_url=settings.OPENAI_BASE_URL
+        ) if settings.OPENAI_API_KEY else None
 
     async def chat(self, user: User, request: ChatRequest) -> AsyncGenerator[str, None]:
         # 1. Get or Create Conversation
@@ -86,7 +89,7 @@ class ChatService:
         if self.openai_client:
             try:
                 stream = await self.openai_client.chat.completions.create(
-                    model="gpt-4o-mini",
+                    model=settings.OPENAI_MODEL,
                     messages=messages,
                     stream=True,
                     temperature=0.7

@@ -41,7 +41,7 @@ export function Sidebar({ conversations, activeId, onSelect, onNew, onLogout }: 
           onClick={onNew}
         >
           <Plus className="w-4 h-4" />
-          {isOpen && <span className="ml-2">New Chat</span>}
+          {isOpen && <span className="ml-2">新对话</span>}
         </Button>
       </div>
 
@@ -73,8 +73,8 @@ export function Sidebar({ conversations, activeId, onSelect, onNew, onLogout }: 
           </div>
           {isOpen && (
             <div className="flex-1 overflow-hidden">
-              <p className="text-sm font-medium truncate">User</p>
-              <p className="text-xs text-gray-500 truncate">Free Plan</p>
+              <p className="text-sm font-medium truncate">用户</p>
+              <p className="text-xs text-gray-500 truncate">普通会员</p>
             </div>
           )}
         </div>
@@ -85,7 +85,7 @@ export function Sidebar({ conversations, activeId, onSelect, onNew, onLogout }: 
           onClick={onLogout}
         >
           <LogOut className="w-4 h-4" />
-          {isOpen && <span className="ml-2">Sign Out</span>}
+          {isOpen && <span className="ml-2">退出登录</span>}
         </Button>
       </div>
       

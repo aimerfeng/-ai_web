@@ -53,23 +53,23 @@ export default function LoginPage() {
       >
         <div className="text-center space-y-2">
           <h1 className="text-3xl font-serif font-bold bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent">
-            Welcome Back
+            欢迎回来
           </h1>
-          <p className="text-sm text-gray-500">Sign in to your SkinTech account</p>
+          <p className="text-sm text-gray-500">登录您的 SkinTech 账号</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <label className="text-sm font-medium ml-1">Username</label>
+            <label className="text-sm font-medium ml-1">用户名</label>
             <Input 
               required
-              placeholder="Enter your username"
+              placeholder="请输入用户名"
               value={formData.username}
               onChange={(e) => setFormData({...formData, username: e.target.value})}
             />
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-medium ml-1">Password</label>
+            <label className="text-sm font-medium ml-1">密码</label>
             <Input 
               required
               type="password"
@@ -79,14 +79,14 @@ export default function LoginPage() {
             />
           </div>
           <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? "Signing in..." : "Sign In"}
+            {loading ? "登录中..." : "登录"}
           </Button>
         </form>
 
         <div className="text-center text-sm text-gray-500">
-          Don't have an account?{" "}
+          还没有账号？{" "}
           <Link href="/auth/register" className="text-primary-600 font-medium hover:underline">
-            Register here
+            立即注册
           </Link>
         </div>
       </motion.div>

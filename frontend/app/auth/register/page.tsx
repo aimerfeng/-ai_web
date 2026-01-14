@@ -58,23 +58,23 @@ export default function RegisterPage() {
       >
         <div className="text-center space-y-2">
           <h1 className="text-3xl font-serif font-bold bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent">
-            Join SkinTech
+            加入 SkinTech
           </h1>
-          <p className="text-sm text-gray-500">Create your personalized skincare journey</p>
+          <p className="text-sm text-gray-500">开启您的个性化护肤之旅</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <label className="text-sm font-medium ml-1">Username</label>
+            <label className="text-sm font-medium ml-1">用户名</label>
             <Input 
               required
-              placeholder="Choose a username"
+              placeholder="请设置用户名"
               value={formData.username}
               onChange={(e) => setFormData({...formData, username: e.target.value})}
             />
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-medium ml-1">Password</label>
+            <label className="text-sm font-medium ml-1">密码</label>
             <Input 
               required
               type="password"
@@ -84,7 +84,7 @@ export default function RegisterPage() {
             />
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-medium ml-1">Confirm Password</label>
+            <label className="text-sm font-medium ml-1">确认密码</label>
             <Input 
               required
               type="password"
@@ -94,14 +94,14 @@ export default function RegisterPage() {
             />
           </div>
           <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? "Creating Account..." : "Register"}
+            {loading ? "注册中..." : "注册账号"}
           </Button>
         </form>
 
         <div className="text-center text-sm text-gray-500">
-          Already have an account?{" "}
+          已有账号？{" "}
           <Link href="/auth/login" className="text-primary-600 font-medium hover:underline">
-            Login here
+            立即登录
           </Link>
         </div>
       </motion.div>

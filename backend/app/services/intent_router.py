@@ -21,7 +21,10 @@ class IntentRouter:
     EXTERNAL_KEYWORDS = ["最新", "2025", "新品", "趋势", "新闻", "发布", "天气", "价格", "哪里买"]
 
     def __init__(self):
-        self.client = AsyncOpenAI(api_key=settings.OPENAI_API_KEY) if settings.OPENAI_API_KEY else None
+        self.client = AsyncOpenAI(
+            api_key=settings.OPENAI_API_KEY,
+            base_url=settings.OPENAI_BASE_URL
+        ) if settings.OPENAI_API_KEY else None
 
     async def classify(self, query: str) -> IntentResult:
         """
@@ -60,13 +63,13 @@ class IntentRouter:
     async def _llm_classify(self, query: str) -> IntentResult:
         try:
             response = await self.client.chat.completions.create(
-                model="gpt-4o-mini",
+                model=settings.OPENAI_MODEL,
                 messages=[
-                    {"role": "system", "content": "You are an intent classifier for a skincare AI assistant. Classify the user query into one of these categories:\n"
-                                                  "- PRODUCT_KNOWLEDGE: Questions about skincare products, ingredients, routines, or advice.\n"
-                                                  "- EXTERNAL_KNOWLEDGE: Questions requiring real-time info (news, latest trends, prices, weather) or specific non-skincare facts.\n"
-                                                  "- GENERAL_CHAT: Greetings, casual conversation, or questions not related to skincare.\n\n"
-                                                  "Reply ONLY with the category name."},
+                    {"role": "system", "content": "你是一个美妆 AI 助手的意图分类器。请将用户的查询分类为以下类别之一：\n"
+                                                  "- PRODUCT_KNOWLEDGE: 关于护肤产品、成分、护肤步骤或建议的问题。\n"
+                                                  "- EXTERNAL_KNOWLEDGE: 需要实时信息（新闻、趋势、价格、天气）或特定非护肤事实的问题。\n"
+                                                  "- GENERAL_CHAT: 问候、闲聊或与护肤无关的问题。\n\n"
+                                                  "仅回复类别名称。"},
                     {"role": "user", "content": query}
                 ],
                 temperature=0,

@@ -1,3 +1,4 @@
+import json
 from app.core.vector_db import get_collection
 from app.schemas.product import Product
 from typing import List
@@ -46,7 +47,16 @@ class RAGService:
                 # Convert metadata back to Product
                 # Note: We stored simple types in metadata, need to handle Enum conversion if Pydantic doesn't automatically
                 try:
-                    product = Product.model_validate(metadatas[i])
+                    # Deserialize lists from JSON strings
+                    meta = metadatas[i].copy()
+                    for key, value in meta.items():
+                        if isinstance(value, str) and (value.startswith("[") and value.endswith("]")):
+                            try:
+                                meta[key] = json.loads(value)
+                            except json.JSONDecodeError:
+                                pass
+                                
+                    product = Product.model_validate(meta)
                     valid_products.append(product)
                 except Exception as e:
                     print(f"Error parsing product metadata: {e}")

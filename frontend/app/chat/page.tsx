@@ -15,8 +15,8 @@ export default function ChatPage() {
   
   // Mock conversations for UI demo
   const [conversations] = useState([
-    { id: '1', title: 'Anti-aging Routine', updatedAt: new Date() },
-    { id: '2', title: 'Dry Skin Help', updatedAt: new Date() }
+    { id: '1', title: '抗老护肤流程', updatedAt: new Date() },
+    { id: '2', title: '干皮保湿建议', updatedAt: new Date() }
   ])
 
   useEffect(() => {
@@ -59,10 +59,10 @@ export default function ChatPage() {
               </motion.div>
               <div className="space-y-2">
                 <h1 className="text-4xl font-serif font-bold bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent">
-                  Hello, I'm SkinTech
+                  你好，我是 SkinTech
                 </h1>
                 <p className="text-gray-500 max-w-md mx-auto">
-                  Your personal AI cosmetic chemist. Ask me about ingredients, routines, or product analysis.
+                  您的个人 AI 护肤配方师。请咨询我关于成分、护肤流程或产品分析的问题。
                 </p>
               </div>
             </div>
@@ -85,7 +85,7 @@ export default function ChatPage() {
                     />
                   </div>
                   <div className="px-5 py-3 rounded-2xl glass rounded-tl-none border border-white/50 text-gray-500 text-sm italic">
-                    Analyzing formulations...
+                    正在分析配方成分...
                   </div>
                 </motion.div>
               )}

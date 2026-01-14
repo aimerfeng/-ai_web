@@ -49,7 +49,7 @@ export function ChatInput({ onSend, isLoading }: ChatInputProps) {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Ask SkinTech about your skincare routine..."
+            placeholder="向 SkinTech 咨询护肤问题..."
             className="w-full bg-transparent border-none focus:ring-0 resize-none py-3 px-4 max-h-[200px] scrollbar-hide text-base placeholder:text-gray-400"
             rows={1}
             disabled={isLoading}
@@ -75,7 +75,7 @@ export function ChatInput({ onSend, isLoading }: ChatInputProps) {
         </Button>
       </motion.div>
       <p className="text-center text-xs text-gray-400 mt-2">
-        AI advice is for reference only. Please consult a dermatologist for medical concerns.
+        AI 建议仅供参考，如有医疗需求请咨询专业医生。
       </p>
     </div>
   )

@@ -13,11 +13,13 @@ class Settings(BaseSettings):
     # Database
     DATABASE_URL: str = "sqlite+aiosqlite:///./skintech.db"
     
-    # OpenAI
-    OPENAI_API_KEY: str | None = None
+    # OpenAI / DeepSeek
+    OPENAI_API_KEY: str = None
+    OPENAI_BASE_URL: str = "https://api.deepseek.com"
+    OPENAI_MODEL: str = "deepseek-chat"
     
     # Tavily
-    TAVILY_API_KEY: str | None = None
+    TAVILY_API_KEY: str = None
     
     # ChromaDB
     CHROMA_PERSIST_DIRECTORY: str = "./chroma_db"
